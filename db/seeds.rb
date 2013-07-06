@@ -18,20 +18,23 @@ euro_currency = Currency.create :name=>"Euro", :label=>"€", :value=>3.73
 CurrencyLog.create :currency=>euro_currency, :value=>sol_currency.value
 
 #Type Transactions
-TypeTransaction.create :name=>"Ingreso", :label=>"in"
-TypeTransaction.create :name=>"Egreso", :label=>"out"
+in_type = TypeTransaction.create :name=>"Ingreso", :label=>"in"
+out_type = TypeTransaction.create :name=>"Egreso", :label=>"out"
 
 #Categories
-Category.create :name=>"Transporte"
-Category.create :name=>"Celular"
-Category.create :name=>"Picmonic"
-Category.create :name=>"Casa"
-Category.create :name=>"Railscasts"
-Category.create :name=>"Ropa"
-Category.create :name=>"Metropolitano"
-Category.create :name=>"Comidas"
-Category.create :name=>"Salidas"
-Category.create :name=>"Compras para Casa"
+Category.create :name=>"Sueldo", :type_transaction=>in_type
+Category.create :name=>"Freelance", :type_transaction=>in_type
+
+Category.create :name=>"Transporte", :type_transaction=>out_type
+Category.create :name=>"Celular", :type_transaction=>out_type
+Category.create :name=>"Picmonic", :type_transaction=>out_type
+Category.create :name=>"Casa", :type_transaction=>out_type
+Category.create :name=>"Railscasts", :type_transaction=>out_type
+Category.create :name=>"Ropa", :type_transaction=>out_type
+Category.create :name=>"Metropolitano", :type_transaction=>out_type
+Category.create :name=>"Comidas", :type_transaction=>out_type
+Category.create :name=>"Salidas", :type_transaction=>out_type
+Category.create :name=>"Compras para Casa", :type_transaction=>out_type
 
 #Type Accounts
 TypeAccount.create :name=>"Débito", :label=>"debit"

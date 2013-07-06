@@ -3,4 +3,7 @@ class TypeTransaction < ActiveRecord::Base
   default_scope where :deleted=>false
   
   has_many :transactions
+  has_many :categories
+  
+  attr_accessible :name, :label, :deleted
 end

@@ -5,4 +5,6 @@ class AccountState < ActiveRecord::Base
   belongs_to :account
   belongs_to :currency_log
   belongs_to :transaction
+  
+  attr_accessible :account_id, :amount, :currency_log_id, :transaction_id, :deleted
 end

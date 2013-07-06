@@ -3,4 +3,6 @@ class TypeAccount < ActiveRecord::Base
   default_scope where :deleted=>false
   
   has_many :accounts
+  
+  attr_accessible :name, :label, :deleted
 end

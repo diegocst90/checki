@@ -82,19 +82,22 @@ ActiveRecord::Schema.define(:version => 20130618003818) do
     t.foreign_key ["currency_id"], "currencies", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_currency_logs_currency_id"
   end
 
-  create_table "categories", :force => true do |t|
-    t.string   "name",                          :null => false
-    t.boolean  "deleted",    :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-  end
-
   create_table "type_transactions", :force => true do |t|
     t.string   "name",                          :null => false
     t.string   "label",                         :null => false
     t.boolean  "deleted",    :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name",                                   :null => false
+    t.integer  "type_transaction_id",                    :null => false
+    t.boolean  "deleted",             :default => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.index ["type_transaction_id"], :name => "fk__categories_type_transaction_id"
+    t.foreign_key ["type_transaction_id"], "type_transactions", ["id"], :on_update => :restrict, :on_delete => :restrict, :name => "fk_categories_type_transaction_id"
   end
 
   create_table "transactions", :force => true do |t|
@@ -104,7 +107,7 @@ ActiveRecord::Schema.define(:version => 20130618003818) do
     t.integer  "category_id",                            :null => false
     t.integer  "type_transaction_id",                    :null => false
     t.float    "amount",                                 :null => false
-    t.datetime "date_trasanction",                       :null => false
+    t.datetime "date_transanction",                      :null => false
     t.boolean  "deleted",             :default => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false

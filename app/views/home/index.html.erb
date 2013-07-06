@@ -1,12 +1,29 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
-
-<%= "index.html" %>
-
 <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+<br/>
+<p class="alert"><%= alert %></p>
 
 
-<%= @greeting %>
+<% if user_signed_in? %>
+  <%= link_to "Sign out", destroy_user_session_url, :method=>:delete %>
+<% end %>
+
+<div class="form_transaction">
+  AQUI VA
+</div>
+<div id="list_transactions">
+  <%= form_tag url_for(:action=>"index"), :method=>:get do %>
+    <p><label for="search">Buscar:</label><%= text_field_tag :search, @search %></p>
+    <%= hidden_field_tag :page,@page %>
+    <%= hidden_field_tag :order,@order %>
+    <button id="button_submit" type="submit" class="button">Buscar</button>
+  <% end %>
+
+  <table id="table1" class="gtable">
+    <thead>
+      <tr>
+        <% str_order = get_str_order("transactions.updated_at",@order) %>
+        <th><%= link_to "Fecha",{:action=>"index",:order=>str_order,:page=>@page,:search=>@search},{:title=>get_str_order_title(str_order,"Fecha")} %></th>
+      </tr>
+    </thead>
+  </table>
+</div>

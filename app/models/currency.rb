@@ -6,6 +6,8 @@ class Currency < ActiveRecord::Base
   has_many :transactions
   has_many :currency_logs
   
+  attr_accessible :name, :label, :value, :deleted
+  
   before_update :save_log
   
   def save_log

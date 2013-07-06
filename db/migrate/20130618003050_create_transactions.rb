@@ -7,7 +7,7 @@ class CreateTransactions < ActiveRecord::Migration
       t.references :category, :null=>false
       t.references :type_transaction, :null=>false
       t.float :amount, :null=>false
-      t.datetime :date_trasanction, :null=>false
+      t.datetime :date_transanction, :null=>false
       t.boolean :deleted, :default=>false
 
       t.timestamps

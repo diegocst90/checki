@@ -7,4 +7,6 @@ class Account < ActiveRecord::Base
   belongs_to :currency
   has_many :transactions
   has_many :account_states
+  
+  attr_accessible :name, :user_id, :type_account_id, :currency_id, :amount, :deleted
 end

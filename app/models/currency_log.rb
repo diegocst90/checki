@@ -2,6 +2,8 @@ class CurrencyLog < ActiveRecord::Base
   include Core::BaseModel
   default_scope where :deleted=>false
   
+  attr_accessible :currency_id, :currency, :value, :deleted
+  
   belongs_to :currency
   has_many :account_states
   
